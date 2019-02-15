@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ProjectCore</string>
+    <string name="loading_dialog_message_tv_text">Loading</string>
+</resources>
