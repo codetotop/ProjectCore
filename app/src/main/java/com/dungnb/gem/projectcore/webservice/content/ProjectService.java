@@ -1,6 +1,7 @@
 package com.dungnb.gem.projectcore.webservice.content;
 
 import com.dungnb.gem.projectcore.pojo.business_model.SourceInformationPersonnelDTO;
+import com.dungnb.gem.projectcore.pojo.response.QuestionResponse;
 import com.dungnb.gem.projectcore.pojo.response.SourceChildrenResponse;
 
 import java.util.List;
@@ -8,7 +9,9 @@ import java.util.List;
 import io.reactivex.Single;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ProjectService {
   @POST("assets")
@@ -25,4 +28,10 @@ public interface ProjectService {
   Single<List<SourceInformationPersonnelDTO>> fetchSourceInformationPersonnel(@Field("asset_id") String assetId,
                                                                               @Field("organization_id") String organizationId,
                                                                               @Field("company_id") String companyId);
+
+  @GET("2.2/questions")
+  Single<QuestionResponse> fetchQuestionList(@Query("order") String oder,
+                                             @Query("sort") String sort,
+                                             @Query("tagged") String tagged,
+                                             @Query("site") String site);
 }

@@ -17,7 +17,6 @@ public class SourceInformationPersonnelDTO {
   @SerializedName("date_end")
   private String mDateEnd;
 
-
   // Getter Methods
 
   public String getAssetId() {

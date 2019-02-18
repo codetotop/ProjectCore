@@ -1,8 +1,8 @@
-
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    flavorDimensions "version"
     defaultConfig {
         applicationId "com.dungnb.gem.projectcore"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -18,6 +18,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors{
+        dev{
+            applicationId "com.vidawater.vidagis"
+            buildConfigField 'String', 'BASE_URL', '"https://api.stackexchange.com/"'
+            buildConfigField 'String', 'API_VERSION', '"1.0"'
+        }
+
+        product{
+            applicationId "com.vidawater.vidagis"
+            buildConfigField 'String', 'BASE_URL', '"https://api.stackexchange.com/"'
+            buildConfigField 'String', 'API_VERSION', '"1.0"'
+        }
+    }
+
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
