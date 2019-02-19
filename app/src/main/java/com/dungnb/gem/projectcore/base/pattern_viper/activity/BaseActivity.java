@@ -1,6 +1,5 @@
-package com.dungnb.gem.projectcore.base.activity;
+package com.dungnb.gem.projectcore.base.pattern_viper.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,9 +14,9 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(getLayoutID());
-
+    setContentView(getLayoutResourceID());
     mUnbinder = ButterKnife.bind(this);
+
     mPresenter = createPresenter();
     if (mPresenter != null) {
       mPresenter.createView(this);
@@ -25,7 +24,7 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
 
   }
 
-  abstract int getLayoutID();
+  public abstract int getLayoutResourceID();
 
   @Override
   protected void onResume() {

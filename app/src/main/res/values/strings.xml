@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">ProjectCore</string>
+    <string name="btn_login">Login</string>
+    <string name="error_user_name">User is empty .</string>
+    <string name="error_pass_word">Password is empty .</string>
     <string name="loading_dialog_message_tv_text">Loading</string>
     <string name="question_id">Question ID:</string>
     <string name="question_account">Question View Count:</string>
     <string name="question_title">Question Title:</string>
+    <string name="fetch_question">Lấy câu hỏi từ StackOverFlow</string>
 </resources>

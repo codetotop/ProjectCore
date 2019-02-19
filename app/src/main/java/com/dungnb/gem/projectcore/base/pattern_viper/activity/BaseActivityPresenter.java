@@ -1,4 +1,4 @@
-package com.dungnb.gem.projectcore.base.activity;
+package com.dungnb.gem.projectcore.base.pattern_viper.activity;
 
 import android.content.Context;
 
@@ -13,6 +13,11 @@ public abstract class BaseActivityPresenter<V extends BaseActivityContract.View,
   @Override
   public V getView() {
     return mView;
+  }
+
+  @Override
+  public void createView(V view) {
+    mView = view;
   }
 
   @Override

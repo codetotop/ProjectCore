@@ -1,4 +1,4 @@
-package com.dungnb.gem.projectcore.base.activity;
+package com.dungnb.gem.projectcore.base.pattern_viper.activity;
 
 import android.content.Context;
 
@@ -7,7 +7,6 @@ public interface BaseActivityContract {
     P getPresenter();
 
     P createPresenter();
-
   }
 
   interface Presenter<V extends View, I extends Interactor> {
@@ -27,6 +26,5 @@ public interface BaseActivityContract {
     P getPresenter();
 
     Context getContext();
-
   }
 }
