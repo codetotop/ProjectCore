@@ -2,6 +2,7 @@ package com.dungnb.gem.projectcore.screen.home;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +33,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
   @Override
   public void onBindViewHolder(@NonNull QuestionHolder questionHolder, int i) {
     Question question = mQuestions.get(i);
-    questionHolder.mTvQuestionId.setText(question.getQuestionId());
-    questionHolder.mTvQuestion.setText(question.getTitle());
-    questionHolder.mTvQuestionViewCount.setText(question.getViewCount());
+    questionHolder.mTvQuestionId.setText(mContext.getString(R.string.question_id) + " " + question.getQuestionId());
+    questionHolder.mTvQuestion.setText(mContext.getString(R.string.question_title) + " " + question.getTitle());
+    questionHolder.mTvQuestionViewCount.setText(mContext.getString(R.string.question_account) + " " + question.getViewCount());
   }
 
   @Override

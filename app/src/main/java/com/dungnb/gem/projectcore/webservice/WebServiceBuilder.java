@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class WebServiceBuilder {
-
   private static final int CONNECTION_TIME_OUT = 60000;
   private static final int READ_TIME_OUT = 60000;
 

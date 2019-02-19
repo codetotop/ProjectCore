@@ -9,13 +9,19 @@ import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
 import com.dungnb.gem.projectcore.pojo.model.Question;
 import com.dungnb.gem.projectcore.webservice.WebServiceBuilder;
+import com.dungnb.gem.projectcore.webservice.content.ProjectRespository;
+import com.dungnb.gem.projectcore.webservice.content.ProjectService;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 @SuppressLint("CheckResult")
 
@@ -44,18 +50,21 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void getQuestions() {
-    WebServiceBuilder.getInstance().getProjectService().fetchQuestionList("desc", "activity", "Android", "stackoverflow")
-            .flatMap(questionResponse -> {
-              ArrayList<QuestionDTO> questionDTOS = (ArrayList<QuestionDTO>) questionResponse.getQuestionDTOS();
-              ArrayList<Question> questions = new ArrayList<>();
-              for (int i = 0; i < questionDTOS.size(); i++) {
-                Question question = new Question();
-                question.convert(questionDTOS.get(i));
-                questions.add(question);
-              }
-              mQuestionAdapter.refreshList(questions);
-              return Single.just(questions);
+    ProjectRespository.fetchQuestions("desc", "activity", "Android", "stackoverflow")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(questions -> {
+              updateUI(questions);
+            }, throwable -> {
+              showError();
             });
+  }
+
+  private void showError() {
+  }
+
+  private void updateUI(List<Question> questions) {
+    mQuestionAdapter.refreshList((ArrayList<Question>) questions);
   }
 
   private void addEvents() {
