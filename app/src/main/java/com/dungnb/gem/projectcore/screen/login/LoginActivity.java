@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.activity.BaseActivity;
 import com.dungnb.gem.projectcore.screen.home.HomeActivity;
 

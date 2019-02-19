@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
-import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.activity.BaseActivity;
 import com.dungnb.gem.projectcore.pojo.model.Question;
 import com.dungnb.gem.projectcore.screen.adapter.QuestionAdapter;
