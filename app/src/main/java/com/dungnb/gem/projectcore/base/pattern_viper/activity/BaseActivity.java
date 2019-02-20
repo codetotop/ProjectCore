@@ -24,7 +24,7 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
 
     mPresenter = createPresenter();
     if (mPresenter != null) {
-      mPresenter.createView(this);
+      mPresenter.setView(this);
     }
 
   }

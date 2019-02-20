@@ -8,10 +8,6 @@ public class LoginActivityInteractor
         extends BaseActivityInteractor<LoginActivityContract.Presenter>
         implements LoginActivityContract.Interactor {
 
-  public LoginActivityInteractor(LoginActivityContract.Presenter presenter) {
-    super(presenter);
-  }
-
   @Override
   public void login(String user_name, String pass_word) {
 

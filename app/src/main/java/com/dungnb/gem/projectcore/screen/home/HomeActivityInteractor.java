@@ -12,9 +12,5 @@ import io.reactivex.schedulers.Schedulers;
 public class HomeActivityInteractor
         extends BaseActivityInteractor<HomeActivityContract.Presenter>
         implements HomeActivityContract.Interactor {
-  public HomeActivityInteractor(HomeActivityContract.Presenter presenter) {
-    super(presenter);
-  }
-
 
 }

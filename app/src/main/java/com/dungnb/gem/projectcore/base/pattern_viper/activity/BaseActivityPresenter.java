@@ -8,6 +8,7 @@ public abstract class BaseActivityPresenter<V extends BaseActivityContract.View,
 
   public BaseActivityPresenter() {
     mInteractor = createInteractor();
+    mInteractor.setPresenter(this);
   }
 
   @Override
@@ -16,7 +17,7 @@ public abstract class BaseActivityPresenter<V extends BaseActivityContract.View,
   }
 
   @Override
-  public void createView(V view) {
+  public void setView(V view) {
     mView = view;
   }
 

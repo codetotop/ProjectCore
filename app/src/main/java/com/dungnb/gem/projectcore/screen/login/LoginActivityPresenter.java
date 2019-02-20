@@ -6,9 +6,10 @@ public class LoginActivityPresenter
         extends BaseActivityPresenter<LoginActivityContract.View, LoginActivityContract.Interactor>
         implements LoginActivityContract.Presenter {
 
+
   @Override
   public LoginActivityContract.Interactor createInteractor() {
-    return new LoginActivityInteractor(this);
+    return new LoginActivityInteractor();
   }
 
   @Override

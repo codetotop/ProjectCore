@@ -4,14 +4,14 @@ import android.content.Context;
 
 public interface BaseActivityContract {
   interface View<P extends Presenter> {
-    P getPresenter();
-
     P createPresenter();
+
+    P getPresenter();
   }
 
   interface Presenter<V extends View, I extends Interactor> {
     /*Attack View*/
-    void createView(V view);
+    void setView(V view);
 
     V getView();
 
@@ -23,6 +23,8 @@ public interface BaseActivityContract {
   }
 
   interface Interactor<P extends Presenter> {
+    void setPresenter(P presenter);
+
     P getPresenter();
 
     Context getContext();

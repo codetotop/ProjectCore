@@ -4,7 +4,6 @@ import com.dungnb.gem.projectcore.base.pattern_viper.fragment.BaseFragmentPresen
 import com.dungnb.gem.projectcore.pojo.model.Question;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionFragmentPresenter
         extends BaseFragmentPresenter<QuestionFragmentContract.View, QuestionFragmentContract.Interactor>
@@ -12,7 +11,7 @@ public class QuestionFragmentPresenter
 
   @Override
   public QuestionFragmentContract.View createView() {
-    return new QuestionFragment();
+    return QuestionFragment.getInstance();
   }
 
   @Override

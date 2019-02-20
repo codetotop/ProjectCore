@@ -9,9 +9,6 @@ public class HomeActivityPresenter extends BaseActivityPresenter<HomeActivityCon
         implements HomeActivityContract.Presenter {
   @Override
   public HomeActivityContract.Interactor createInteractor() {
-    return new HomeActivityInteractor(this);
+    return new HomeActivityInteractor();
   }
-
-
-
 }

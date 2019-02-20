@@ -3,6 +3,7 @@ package com.dungnb.gem.projectcore.screen.home;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.activity.BaseActivity;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragment;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragmentPresenter;
