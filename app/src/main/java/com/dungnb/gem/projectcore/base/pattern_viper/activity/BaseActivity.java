@@ -21,7 +21,6 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
     super.onCreate(savedInstanceState);
     setContentView(getLayoutResourceID());
     mUnbinder = ButterKnife.bind(this);
-
     mPresenter = createPresenter();
     if (mPresenter != null) {
       mPresenter.setView(this);
