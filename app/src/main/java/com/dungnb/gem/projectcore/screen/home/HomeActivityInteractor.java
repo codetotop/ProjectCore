@@ -7,6 +7,7 @@ import com.dungnb.gem.projectcore.webservice.content.ProjectRespository;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+
 @SuppressLint("CheckResult")
 public class HomeActivityInteractor
         extends BaseActivityInteractor<HomeActivityContract.Presenter>
@@ -15,15 +16,5 @@ public class HomeActivityInteractor
     super(presenter);
   }
 
-  @Override
-  public void fetchQuestion() {
-    ProjectRespository.fetchQuestions("desc", "activity", "Android", "stackoverflow")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(questions -> {
-              getPresenter().fetchQuestionSuccess(questions);
-            }, throwable -> {
-              getPresenter().fetchQuestionError();
-            });
-  }
+
 }

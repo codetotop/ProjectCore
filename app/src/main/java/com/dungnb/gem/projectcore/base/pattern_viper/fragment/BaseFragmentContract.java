@@ -8,6 +8,8 @@ public interface BaseFragmentContract {
     P getPresenter();
 
     void setPresenter(P presenter);
+
+    Context getContext();
   }
 
   interface Presenter<V extends View, I extends Interactor> {
@@ -26,6 +28,8 @@ public interface BaseFragmentContract {
 
   interface Interactor<P extends Presenter> {
     P getPresenter();
+
+    void setPresenter(P presenter);
 
     Context getContext();
   }

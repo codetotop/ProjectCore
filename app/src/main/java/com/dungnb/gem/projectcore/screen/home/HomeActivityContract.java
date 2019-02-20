@@ -8,21 +8,14 @@ import java.util.List;
 public interface HomeActivityContract {
   interface View extends BaseActivityContract.View<Presenter> {
 
-    void updateUI(List<Question> questions);
 
-    void showError();
   }
 
   interface Presenter extends BaseActivityContract.Presenter<View, Interactor> {
-     void getQuestion();
 
-    void fetchQuestionSuccess(List<Question> questions);
-
-    void fetchQuestionError();
   }
 
   interface Interactor extends BaseActivityContract.Interactor<Presenter> {
 
-    void fetchQuestion();
   }
 }

@@ -7,7 +7,8 @@ public abstract class BaseFragmentInteractor<P extends BaseFragmentContract.Pres
 
   P mPresenter;
 
-  public BaseFragmentInteractor(P presenter) {
+  @Override
+  public void setPresenter(P presenter) {
     mPresenter = presenter;
   }
 

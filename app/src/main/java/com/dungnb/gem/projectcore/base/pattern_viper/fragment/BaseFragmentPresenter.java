@@ -8,9 +8,11 @@ public abstract class BaseFragmentPresenter<V extends BaseFragmentContract.View,
   V mView;
   I mInteractor;
 
-  public BaseFragmentPresenter(I interactor) {
+  public BaseFragmentPresenter() {
     mView = createView();
+    mView.setPresenter(this);
     mInteractor = createInteractor();
+    mInteractor.setPresenter(this);
   }
 
   @Override
@@ -30,6 +32,6 @@ public abstract class BaseFragmentPresenter<V extends BaseFragmentContract.View,
 
   @Override
   public Context getContext() {
-    return (Context) mView;
+    return mView.getContext();
   }
 }

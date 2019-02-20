@@ -3,8 +3,10 @@ package com.dungnb.gem.projectcore.webservice.content;
 import android.annotation.SuppressLint;
 
 import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
+import com.dungnb.gem.projectcore.pojo.business_model.SearchDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SourceInformationPersonnelDTO;
 import com.dungnb.gem.projectcore.pojo.model.Question;
+import com.dungnb.gem.projectcore.pojo.model.Search;
 import com.dungnb.gem.projectcore.pojo.model.SourceInformationPersonnel;
 import com.dungnb.gem.projectcore.pojo.response.QuestionResponse;
 import com.dungnb.gem.projectcore.pojo.response.SourceChildrenResponse;
@@ -43,8 +45,8 @@ public class ProjectRespository {
 
   public static Single<List<Question>> fetchQuestions(String oder, String sort, String tagged, String site) {
     return WebServiceBuilder.getInstance().getProjectService().fetchQuestionList(oder, sort, tagged, site)
-            .flatMap(questionResponse -> {
-              ArrayList<QuestionDTO> questionDTOS = (ArrayList<QuestionDTO>) questionResponse.getQuestionDTOS();
+            .flatMap(baseStackOverFlowResponse -> {
+              ArrayList<QuestionDTO> questionDTOS = (ArrayList<QuestionDTO>) baseStackOverFlowResponse.getItems();
               ArrayList<Question> questions = new ArrayList<>();
               for (int i = 0; i < questionDTOS.size(); i++) {
                 Question question = new Question();
@@ -53,5 +55,20 @@ public class ProjectRespository {
               }
               return Single.just(questions);
             });
+  }
+
+  public static Single<List<Search>> fetchSearches(String oder, String sort, String tagged, String site) {
+    return WebServiceBuilder.getInstance().getProjectService().fetchSearchList(oder, sort, tagged, site)
+            .flatMap(baseStackOverFlowResponse -> {
+              ArrayList<SearchDTO> searchDTOS = (ArrayList<SearchDTO>) baseStackOverFlowResponse.getItems();
+              ArrayList<Search> searches = new ArrayList<>();
+              for (int i = 0; i < searchDTOS.size(); i++) {
+                Search search = new Search();
+                search.convert(searchDTOS.get(i));
+                searches.add(search);
+              }
+              return Single.just(searches);
+            });
+
   }
 }

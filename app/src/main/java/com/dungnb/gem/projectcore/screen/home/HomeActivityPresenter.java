@@ -13,18 +13,5 @@ public class HomeActivityPresenter extends BaseActivityPresenter<HomeActivityCon
   }
 
 
-  @Override
-  public void getQuestion() {
-    getInteractor().fetchQuestion();
-  }
 
-  @Override
-  public void fetchQuestionSuccess(List<Question> questions) {
-    getView().updateUI(questions);
-  }
-
-  @Override
-  public void fetchQuestionError() {
-    getView().showError();
-  }
 }

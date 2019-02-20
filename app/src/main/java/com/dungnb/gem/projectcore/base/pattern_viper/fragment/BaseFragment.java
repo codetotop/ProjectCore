@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +18,6 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
   P mPresenter;
   Unbinder mUnbinder;
 
-  public BaseFragment(P presenter) {
-    mPresenter = presenter;
-  }
-
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,10 +28,14 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
 
   protected abstract int getLayoutResourceID();
 
-
   @Override
   public P getPresenter() {
     return mPresenter;
+  }
+
+  @Override
+  public void setPresenter(P presenter) {
+    this.mPresenter = presenter;
   }
 
   @Override
@@ -53,5 +51,12 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
   @Override
   public void onDestroy() {
     super.onDestroy();
+    mUnbinder.unbind();
+  }
+
+  @Nullable
+  @Override
+  public Context getContext() {
+    return getActivity();
   }
 }
