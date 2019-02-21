@@ -20,15 +20,21 @@ import butterknife.BindView;
 public class AnswerFragment
         extends BaseFragment<AnswerFragmentContract.Presenter> implements AnswerFragmentContract.View {
 
+  private static AnswerFragment mInstance;
   @BindView(R.id.rcvAnswer)
   SuperRecyclerView mRcvAnswer;
-  AnswerAdapter mAnswerAdapter;
-  ArrayList<Answer> mAnswers;
+  private AnswerAdapter mAnswerAdapter;
+  private ArrayList<Answer> mAnswers;
+
+  public static AnswerFragment getInstance() {
+    if (mInstance == null)
+      mInstance = new AnswerFragment();
+    return mInstance;
+  }
 
   @Override
-
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
+  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
     setUpView();
   }
 

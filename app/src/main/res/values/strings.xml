@@ -8,6 +8,7 @@
     <string name="question_account">Question View Count:</string>
     <string name="question_title">Question Title:</string>
     <string name="answer_id">Answer ID:</string>
-    <string name="fetch_question">Lấy danh sách câu hỏi từ StackOverFlow</string>
-    <string name="fetch_search">Lấy danh sách câu trả lời của StackOverFlow</string>
+    <string name="fetch_questions">Lấy danh sách câu hỏi từ StackOverFlow</string>
+    <string name="fetch_answers">Lấy danh sách câu trả lời của StackOverFlow</string>
+    <string name="fetch_searches">Lấy danh sách tìm kiếm của StackOverFlow</string>
 </resources>

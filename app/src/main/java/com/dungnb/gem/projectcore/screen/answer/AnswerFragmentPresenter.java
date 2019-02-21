@@ -15,7 +15,7 @@ public class AnswerFragmentPresenter
         extends BaseFragmentPresenter<AnswerFragmentContract.View> implements AnswerFragmentContract.Presenter {
   @Override
   public AnswerFragmentContract.View createView() {
-    return new AnswerFragment();
+    return AnswerFragment.getInstance();
   }
 
   @SuppressLint("CheckResult")
