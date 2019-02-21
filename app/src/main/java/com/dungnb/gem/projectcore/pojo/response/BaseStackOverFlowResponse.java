@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BaseStackOverFlowResponse<T> {
   @SerializedName("items")
-  List<T> mItems;
+  private List<T> mItems;
 
   public List<T> getItems() {
     return mItems;

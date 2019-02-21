@@ -2,9 +2,11 @@ package com.dungnb.gem.projectcore.webservice.content;
 
 import android.annotation.SuppressLint;
 
+import com.dungnb.gem.projectcore.pojo.business_model.AnswerDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SearchDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SourceInformationPersonnelDTO;
+import com.dungnb.gem.projectcore.pojo.model.Answer;
 import com.dungnb.gem.projectcore.pojo.model.Question;
 import com.dungnb.gem.projectcore.pojo.model.Search;
 import com.dungnb.gem.projectcore.pojo.model.SourceInformationPersonnel;
@@ -54,6 +56,22 @@ public class ProjectRespository {
                 questions.add(question);
               }
               return Single.just(questions);
+            });
+  }
+
+  public static Single<List<Answer>> fetchAnswers(String order, String sort, String site) {
+    return WebServiceBuilder.getInstance().getProjectService().fetchAnswersList(order, sort, site)
+            .flatMap(answerDTOBaseStackOverFlowResponse -> {
+              ArrayList<Answer> answers = new ArrayList<>();
+              ArrayList<AnswerDTO> answerDTOS = (ArrayList<AnswerDTO>) answerDTOBaseStackOverFlowResponse.getItems();
+              for (AnswerDTO answerDTO : answerDTOS) {
+                Answer answer = new Answer();
+                if (answerDTO != null) {
+                  answer.convert(answerDTO);
+                  answers.add(answer);
+                }
+              }
+              return Single.just(answers);
             });
   }
 

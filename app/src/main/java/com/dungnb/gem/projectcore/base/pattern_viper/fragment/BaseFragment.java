@@ -13,8 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
-        extends Fragment
-        implements BaseFragmentContract.View<P> {
+        extends Fragment implements BaseFragmentContract.View<P> {
   P mPresenter;
   Unbinder mUnbinder;
 

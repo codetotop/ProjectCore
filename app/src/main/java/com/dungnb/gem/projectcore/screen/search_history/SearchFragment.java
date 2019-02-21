@@ -48,7 +48,7 @@ public class SearchFragment
   }
 
   private void getData() {
-    getPresenter().fetchSearch();
+    getPresenter().fetchSearches();
   }
 
   private void setUpView() {
@@ -59,12 +59,12 @@ public class SearchFragment
   }
 
   @Override
-  public void updateUI(ArrayList<Search> searches) {
+  public void fetchSearchesSuccess(ArrayList<Search> searches) {
     mSearchAdapter.refreshList(searches);
   }
 
   @Override
-  public void showError() {
-    Toast.makeText(getContext(), "Have Error !", Toast.LENGTH_SHORT).show();
+  public void fetchSearchesError(String message_error) {
+    Toast.makeText(getContext(), message_error, Toast.LENGTH_SHORT).show();
   }
 }

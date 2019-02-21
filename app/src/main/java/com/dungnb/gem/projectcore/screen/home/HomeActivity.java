@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.activity.BaseActivity;
+import com.dungnb.gem.projectcore.screen.answer.AnswerFragment;
+import com.dungnb.gem.projectcore.screen.answer.AnswerFragmentPresenter;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragment;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragmentPresenter;
 import com.dungnb.gem.projectcore.screen.search_history.SearchFragment;
@@ -35,6 +37,11 @@ public class HomeActivity extends BaseActivity<HomeActivityContract.Presenter> i
   @OnClick(R.id.btnGetSearch)
   void getSearch() {
     replaceChildrenFragment(new SearchFragmentPresenter().getFragment(), R.id.containerFrame, true, SearchFragment.class.getName());
+  }
+
+  @OnClick(R.id.btnGetAnswer)
+  void getAnswer() {
+    replaceChildrenFragment(new AnswerFragmentPresenter().getFragment(), R.id.containerFrame, true, AnswerFragment.class.getName());
   }
 
   private void addControls() {

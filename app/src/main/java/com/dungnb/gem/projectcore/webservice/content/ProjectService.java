@@ -1,5 +1,6 @@
 package com.dungnb.gem.projectcore.webservice.content;
 
+import com.dungnb.gem.projectcore.pojo.business_model.AnswerDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SearchDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SourceInformationPersonnelDTO;
@@ -38,9 +39,15 @@ public interface ProjectService {
                                                                    @Query("tagged") String tagged,
                                                                    @Query("site") String site);
 
+  @GET("2.2/answers")
+  Single<BaseStackOverFlowResponse<AnswerDTO>> fetchAnswersList(@Query("order") String order,
+                                                                @Query("sort") String sort,
+                                                                @Query("site") String site);
+
   @GET("2.2/search")
   Single<BaseStackOverFlowResponse<SearchDTO>> fetchSearchList(@Query("order") String oder,
                                                                @Query("sort") String sort,
                                                                @Query("tagged") String tagged,
                                                                @Query("site") String site);
+
 }

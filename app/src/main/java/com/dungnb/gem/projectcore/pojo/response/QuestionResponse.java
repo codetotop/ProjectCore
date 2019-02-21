@@ -7,7 +7,7 @@ import java.util.List;
 
 public class QuestionResponse {
   @SerializedName("items")
-  List<QuestionDTO> mQuestionDTOS;
+  private List<QuestionDTO> mQuestionDTOS;
 
   public List<QuestionDTO> getQuestionDTOS() {
     return mQuestionDTOS;

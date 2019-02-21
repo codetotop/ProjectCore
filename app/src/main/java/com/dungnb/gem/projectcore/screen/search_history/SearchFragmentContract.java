@@ -7,21 +7,21 @@ import java.util.ArrayList;
 
 public interface SearchFragmentContract {
   interface View extends BaseFragmentContract.View<Presenter> {
-    void updateUI(ArrayList<Search> searches);
+    void fetchSearchesSuccess(ArrayList<Search> searches);
 
-    void showError();
+    void fetchSearchesError(String message_error);
   }
 
   interface Presenter extends BaseFragmentContract.Presenter<View, Interactor> {
 
-    void fetchSearch();
+    void fetchSearches();
 
-    void fetchSearchSuccess(ArrayList<Search> searches);
+    void fetchSearchesSuccess(ArrayList<Search> searches);
 
-    void fetchSearchError();
+    void fetchSearchesError(String message_error);
   }
 
   interface Interactor extends BaseFragmentContract.Interactor<Presenter> {
-    void fetchSearch();
+    void fetchSearches();
   }
 }

@@ -17,14 +17,14 @@ public class QuestionFragmentInteractor
         implements QuestionFragmentContract.Interactor {
 
   @Override
-  public void fetchQuestion() {
+  public void fetchQuestions() {
     ProjectRespository.fetchQuestions("desc", "activity", "Android", "stackoverflow")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(questions -> {
-              getPresenter().fetchQuestionSuccess((ArrayList<Question>) questions);
+              getPresenter().fetchQuestionsSuccess((ArrayList<Question>) questions);
             }, throwable -> {
-              getPresenter().fetchQuestionError();
+              getPresenter().fetchQuestionsError("Have error !");
             });
   }
 }

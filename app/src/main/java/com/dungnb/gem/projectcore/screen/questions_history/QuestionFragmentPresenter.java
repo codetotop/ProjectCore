@@ -20,18 +20,18 @@ public class QuestionFragmentPresenter
   }
 
   @Override
-  public void fetchQuestion() {
-    getInteractor().fetchQuestion();
+  public void fetchQuestions() {
+    getInteractor().fetchQuestions();
   }
 
   @Override
-  public void fetchQuestionSuccess(ArrayList<Question> questions) {
-    getView().updateUI(questions);
+  public void fetchQuestionsSuccess(ArrayList<Question> questions) {
+    getView().fetchQuestionsSuccess(questions);
   }
 
   @Override
-  public void fetchQuestionError() {
-    getView().showError();
+  public void fetchQuestionsError(String message_error) {
+    getView().fetchQuestionsError(message_error);
   }
 
 }

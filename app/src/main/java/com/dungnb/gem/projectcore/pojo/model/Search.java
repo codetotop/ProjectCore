@@ -4,9 +4,9 @@ import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
 import com.dungnb.gem.projectcore.pojo.business_model.SearchDTO;
 
 public class Search {
-  String mTitle;
-  String mQuestionId;
-  String mViewCount;
+  private String mTitle;
+  private String mQuestionId;
+  private String mViewCount;
 
   public void convert(SearchDTO searchDTO) {
     mTitle = searchDTO.getTitle();

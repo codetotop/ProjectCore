@@ -1,14 +1,12 @@
 package com.dungnb.gem.projectcore.screen.questions_history;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.Toast;
 
 import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.fragment.BaseFragment;
-import com.dungnb.gem.projectcore.common.Constants;
 import com.dungnb.gem.projectcore.pojo.model.Question;
 import com.dungnb.gem.projectcore.screen.adapter.QuestionAdapter;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
@@ -57,17 +55,17 @@ public class QuestionFragment extends BaseFragment<QuestionFragmentContract.Pres
   }
 
   private void getData() {
-    getPresenter().fetchQuestion();
+    getPresenter().fetchQuestions();
   }
 
   @Override
-  public void updateUI(ArrayList<Question> questions) {
+  public void fetchQuestionsSuccess(ArrayList<Question> questions) {
     mQuestionAdapter.refreshList(questions);
   }
 
   @Override
-  public void showError() {
-    Toast.makeText(getContext(), "Have error !", Toast.LENGTH_SHORT).show();
+  public void fetchQuestionsError(String message_error) {
+    Toast.makeText(getContext(), message_error, Toast.LENGTH_SHORT).show();
   }
 
 }

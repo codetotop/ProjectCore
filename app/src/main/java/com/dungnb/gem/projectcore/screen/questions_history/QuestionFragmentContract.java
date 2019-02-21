@@ -8,22 +8,22 @@ import java.util.List;
 
 public interface QuestionFragmentContract {
   interface View extends BaseFragmentContract.View<Presenter> {
-    void updateUI(ArrayList<Question> questions);
+    void fetchQuestionsSuccess(ArrayList<Question> questions);
 
-    void showError();
+    void fetchQuestionsError(String message_error);
   }
 
   interface Presenter extends BaseFragmentContract.Presenter<View, Interactor> {
-    void fetchQuestion();
+    void fetchQuestions();
 
-    void fetchQuestionSuccess(ArrayList<Question> questions);
+    void fetchQuestionsSuccess(ArrayList<Question> questions);
 
-    void fetchQuestionError();
+    void fetchQuestionsError(String message_error);
 
   }
 
   interface Interactor extends BaseFragmentContract.Interactor<Presenter> {
-    void fetchQuestion();
+    void fetchQuestions();
   }
 
 }

@@ -12,7 +12,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity<P extends BaseActivityContract.Presenter> extends AppCompatActivity implements BaseActivityContract.View<P> {
+public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
+        extends AppCompatActivity implements BaseActivityContract.View<P> {
   P mPresenter;
   Unbinder mUnbinder;
 

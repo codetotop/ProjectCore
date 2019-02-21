@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class QuestionDTO {
   @SerializedName("title")
-  String mTitle;
+  private String mTitle;
   @SerializedName("question_id")
-  String mQuestionId;
+  private String mQuestionId;
   @SerializedName("view_count")
-  String mViewCount;
+  private String mViewCount;
 
   public String getTitle() {
     return mTitle;

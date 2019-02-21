@@ -4,9 +4,9 @@ import com.dungnb.gem.projectcore.pojo.business_model.QuestionDTO;
 import com.google.gson.annotations.SerializedName;
 
 public class Question {
-  String mTitle;
-  String mQuestionId;
-  String mViewCount;
+  private String mTitle;
+  private String mQuestionId;
+  private String mViewCount;
 
   public void convert(QuestionDTO questionDTO) {
     mTitle = questionDTO.getTitle();
