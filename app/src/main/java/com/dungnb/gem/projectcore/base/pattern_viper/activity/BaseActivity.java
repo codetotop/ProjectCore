@@ -57,33 +57,33 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
     return mPresenter;
   }
 
-  protected void addOrReplaceChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_backstack, String tag) {
+  protected void addOrReplaceChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {
     if (args != null)
       children_fragment.setArguments(args);
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
     transaction.replace(container_id, children_fragment, tag);
-    if (add_to_backstack)
+    if (add_to_back_stack)
       transaction.addToBackStack(tag);
     transaction.commit();
   }
 
-  protected void addOrShowChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_backstack, String tag) {
+  protected void addOrShowChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
     List<Fragment> fragments = manager.getFragments();
     if (fragments.isEmpty()) {
-      addChildrenFragment(container_id, children_fragment, args, add_to_backstack, tag);
+      addChildrenFragment(container_id, children_fragment, args, add_to_back_stack, tag);
     } else {
       Fragment fm = manager.findFragmentByTag(tag);
       for (Fragment fragment : fragments) {
-        if (fragment != fm)
+        if (fragment != null && fragment != fm)
           transaction.hide(fragment);
       }
       if (fm != null)
-        showChildrenFragment(children_fragment);
+        showChildrenFragment(fm);
       else {
-        addChildrenFragment(container_id, children_fragment, args, add_to_backstack, tag);
+        addChildrenFragment(container_id, children_fragment, args, add_to_back_stack, tag);
       }
     }
     transaction.commit();
@@ -96,13 +96,13 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
     transaction.commit();
   }
 
-  protected void addChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_backstack, String tag) {
+  protected void addChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {
     if (args != null)
       children_fragment.setArguments(args);
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
     transaction.add(container_id, children_fragment, tag);
-    if (add_to_backstack)
+    if (add_to_back_stack)
       transaction.addToBackStack(tag);
     transaction.commit();
   }

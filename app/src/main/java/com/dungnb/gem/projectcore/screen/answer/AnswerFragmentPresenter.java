@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
+@SuppressLint("CheckResult")
 public class AnswerFragmentPresenter
         extends BaseFragmentPresenter<AnswerFragmentContract.View> implements AnswerFragmentContract.Presenter {
   @Override
@@ -18,7 +18,6 @@ public class AnswerFragmentPresenter
     return AnswerFragment.getInstance();
   }
 
-  @SuppressLint("CheckResult")
   @Override
   public void fetchAnswers() {
     ProjectRespository.fetchAnswers("desc", "activity", "stackoverflow")

@@ -83,11 +83,11 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
     } else {
       Fragment fm = manager.findFragmentByTag(tag);
       for (Fragment fragment : fragments) {
-        if (fragment != fm)
+        if (fragment != null && fragment != fm)
           transaction.hide(fragment);
       }
       if (fm != null)
-        showChildrenFragment(children_fragment);
+        showChildrenFragment(fm);
       else {
         addChildrenFragment(container_id, children_fragment, args, add_to_back_stack, tag);
       }

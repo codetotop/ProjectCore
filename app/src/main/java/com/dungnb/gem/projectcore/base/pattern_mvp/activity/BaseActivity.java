@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.dungnb.gem.projectcore.R;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -63,22 +65,22 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
     transaction.commit();
   }
 
-  protected void addOrShowChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_backstack, String tag) {
+  protected void addOrShowChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
     List<Fragment> fragments = manager.getFragments();
     if (fragments.isEmpty()) {
-      addChildrenFragment(container_id, children_fragment, args, add_to_backstack, tag);
+      addChildrenFragment(container_id, children_fragment, args, add_to_back_stack, tag);
     } else {
       Fragment fm = manager.findFragmentByTag(tag);
       for (Fragment fragment : fragments) {
-        if (fragment != fm)
+        if (fragment != null && fragment != fm)
           transaction.hide(fragment);
       }
       if (fm != null)
-        showChildrenFragment(children_fragment);
+        showChildrenFragment(fm);
       else {
-        addChildrenFragment(container_id, children_fragment, args, add_to_backstack, tag);
+        addChildrenFragment(container_id, children_fragment, args, add_to_back_stack, tag);
       }
     }
     transaction.commit();
@@ -87,17 +89,19 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
   protected void showChildrenFragment(Fragment children_fragment) {
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
+    transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
     transaction.show(children_fragment);
     transaction.commit();
   }
 
-  protected void addChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_backstack, String tag) {
+  protected void addChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {
     if (args != null)
       children_fragment.setArguments(args);
     FragmentManager manager = getSupportFragmentManager();
     FragmentTransaction transaction = manager.beginTransaction();
+    transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
     transaction.add(container_id, children_fragment, tag);
-    if (add_to_backstack)
+    if (add_to_back_stack)
       transaction.addToBackStack(tag);
     transaction.commit();
   }
