@@ -2,6 +2,7 @@ package com.dungnb.gem.projectcore;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.dungnb.gem.projectcore.base.remote.ErrorHandler;
 import com.dungnb.gem.projectcore.common.CacheHelper;
 import com.dungnb.gem.projectcore.webservice.WebServiceBuilder;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -16,6 +17,7 @@ public class ProjectApplication extends MultiDexApplication {
     super.onCreate();
     Fresco.initialize(this);
     CacheHelper.getInstance().init(this);
+    ErrorHandler.getInstance().init(this);
     WebServiceBuilder.getInstance().initServices();
     Realm.init(this);
   }

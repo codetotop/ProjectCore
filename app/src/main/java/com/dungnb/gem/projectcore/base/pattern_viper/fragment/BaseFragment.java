@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -39,6 +40,11 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
   @Override
   public void setPresenter(P presenter) {
     this.mPresenter = presenter;
+  }
+
+  @Override
+  public void showError(int code, String message) {
+    Toast.makeText(getActivity(), code + ": " + message, Toast.LENGTH_SHORT).show();
   }
 
   @Override

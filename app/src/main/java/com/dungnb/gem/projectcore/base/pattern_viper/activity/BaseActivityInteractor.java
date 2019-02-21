@@ -2,6 +2,8 @@ package com.dungnb.gem.projectcore.base.pattern_viper.activity;
 
 import android.content.Context;
 
+import com.dungnb.gem.projectcore.base.remote.ErrorHandler;
+
 public abstract class BaseActivityInteractor<P extends BaseActivityContract.Presenter> implements BaseActivityContract.Interactor<P> {
   P mPresenter;
 
@@ -19,4 +21,5 @@ public abstract class BaseActivityInteractor<P extends BaseActivityContract.Pres
   public P getPresenter() {
     return mPresenter;
   }
+
 }

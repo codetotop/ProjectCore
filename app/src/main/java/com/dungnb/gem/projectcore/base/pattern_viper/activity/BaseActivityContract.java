@@ -7,6 +7,8 @@ public interface BaseActivityContract {
     P createPresenter();
 
     P getPresenter();
+
+    void showError(int code, String message);
   }
 
   interface Presenter<V extends View, I extends Interactor> {
@@ -20,6 +22,8 @@ public interface BaseActivityContract {
     I getInteractor();
 
     Context getContext();
+
+    void handleError(Throwable throwable);
   }
 
   interface Interactor<P extends Presenter> {

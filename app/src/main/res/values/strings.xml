@@ -11,4 +11,6 @@
     <string name="fetch_questions">Lấy danh sách câu hỏi từ StackOverFlow</string>
     <string name="fetch_answers">Lấy danh sách câu trả lời của StackOverFlow</string>
     <string name="fetch_searches">Lấy danh sách tìm kiếm của StackOverFlow</string>
+    <string name="general_error_message">Có lỗi xảy ra</string>
+    <string name="offline_message">Mất kết nối internet. Quý khách vui lòng kiểm tra lại!</string>
 </resources>

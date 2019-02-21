@@ -9,6 +9,8 @@ public interface BaseFragmentContract {
 
     void setPresenter(P presenter);
 
+    void showError(int code, String message);
+
     Context getContext();
   }
 
@@ -24,6 +26,8 @@ public interface BaseFragmentContract {
     Fragment getFragment();
 
     Context getContext();
+
+    void handleError(Throwable throwable);
   }
 
   interface Interactor<P extends Presenter> {

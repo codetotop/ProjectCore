@@ -1,11 +1,16 @@
 package com.dungnb.gem.projectcore.base.pattern_viper.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import com.dungnb.gem.projectcore.base.remote.ErrorHandler;
 
 import java.util.List;
 
@@ -107,4 +112,25 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
     transaction.commit();
   }
 
+  @Override
+  public void onBackPressed() {
+    if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+      getSupportFragmentManager().popBackStack();
+    else
+      super.onBackPressed();
+  }
+
+  public static void hideSoftKeyboard(Activity activity) {
+    final InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+    if (inputMethodManager.isActive()) {
+      if (activity.getCurrentFocus() != null) {
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+      }
+    }
+  }
+
+  @Override
+  public void showError(int code, String message) {
+    Toast.makeText(this, code + " : " + message, Toast.LENGTH_SHORT).show();
+  }
 }

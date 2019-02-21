@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+
 @SuppressLint("CheckResult")
 public class AnswerFragmentPresenter
         extends BaseFragmentPresenter<AnswerFragmentContract.View> implements AnswerFragmentContract.Presenter {
@@ -26,7 +27,8 @@ public class AnswerFragmentPresenter
             .subscribe(answers -> {
               getView().fetchAnswersSuccess((ArrayList<Answer>) answers);
             }, throwable -> {
-              getView().fetchError("Have Error !");
+              getView().showError();
+              //getView().fetchError("Have Error !");
             });
   }
 }

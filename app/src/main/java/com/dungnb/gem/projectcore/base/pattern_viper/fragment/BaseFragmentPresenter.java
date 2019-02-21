@@ -3,6 +3,8 @@ package com.dungnb.gem.projectcore.base.pattern_viper.fragment;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.dungnb.gem.projectcore.base.remote.ErrorHandler;
+
 public abstract class BaseFragmentPresenter<V extends BaseFragmentContract.View, I extends BaseFragmentContract.Interactor>
         implements BaseFragmentContract.Presenter<V, I> {
   V mView;
@@ -33,5 +35,11 @@ public abstract class BaseFragmentPresenter<V extends BaseFragmentContract.View,
   @Override
   public Context getContext() {
     return mView.getContext();
+  }
+
+  @Override
+  public void handleError(Throwable throwable) {
+    ErrorHandler errorHandler = ErrorHandler.getInstance();
+    getView().showError(errorHandler.getCode(), errorHandler.getMessage());
   }
 }

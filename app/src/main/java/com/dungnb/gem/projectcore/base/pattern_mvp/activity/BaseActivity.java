@@ -1,5 +1,6 @@
 package com.dungnb.gem.projectcore.base.pattern_mvp.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.inputmethod.InputMethodManager;
 
 import com.dungnb.gem.projectcore.R;
 
@@ -104,6 +106,23 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter> ext
     if (add_to_back_stack)
       transaction.addToBackStack(tag);
     transaction.commit();
+  }
+
+  @Override
+  public void onBackPressed() {
+    if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+      getSupportFragmentManager().popBackStack();
+    else
+      super.onBackPressed();
+  }
+
+  public static void hideSoftKeyboard(Activity activity) {
+    final InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+    if (inputMethodManager.isActive()) {
+      if (activity.getCurrentFocus() != null) {
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+      }
+    }
   }
 
 }

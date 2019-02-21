@@ -10,6 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.dungnb.gem.projectcore.base.remote.ErrorHandler;
 
 import java.util.List;
 
@@ -45,6 +48,14 @@ public abstract class BaseFragment<P extends BaseFragmentContract.Presenter>
   @Override
   public Context getContext() {
     return getActivity();
+  }
+
+  @Override
+  public void showError() {
+    ErrorHandler errorHandler = ErrorHandler.getInstance();
+    int error_code = errorHandler.getCode();
+    String error_message = errorHandler.getMessage();
+    Toast.makeText(getActivity(), error_code + ": " + error_message, Toast.LENGTH_SHORT).show();
   }
 
   protected void addOrReplaceChildrenFragment(int container_id, Fragment children_fragment, Bundle args, boolean add_to_back_stack, String tag) {

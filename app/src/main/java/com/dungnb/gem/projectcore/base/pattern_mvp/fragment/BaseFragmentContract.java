@@ -10,6 +10,8 @@ public interface BaseFragmentContract {
     P getPresenter();
 
     Context getContext();
+
+    void showError();
   }
 
   interface Presenter<V extends View> {
