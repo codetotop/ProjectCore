@@ -5,8 +5,8 @@ import android.os.Bundle;
 
 import com.dungnb.gem.projectcore.R;
 import com.dungnb.gem.projectcore.base.pattern_viper.activity.BaseActivity;
-import com.dungnb.gem.projectcore.screen.answer.AnswerFragment;
-import com.dungnb.gem.projectcore.screen.answer.AnswerFragmentPresenter;
+import com.dungnb.gem.projectcore.screen.answer_history.AnswerFragment;
+import com.dungnb.gem.projectcore.screen.answer_history.AnswerFragmentPresenter;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragment;
 import com.dungnb.gem.projectcore.screen.questions_history.QuestionFragmentPresenter;
 import com.dungnb.gem.projectcore.screen.search_history.SearchFragment;

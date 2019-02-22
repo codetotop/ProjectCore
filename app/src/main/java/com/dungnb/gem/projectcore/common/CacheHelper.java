@@ -3,9 +3,13 @@ package com.dungnb.gem.projectcore.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.dungnb.gem.projectcore.pojo.model.Question;
+import com.dungnb.gem.projectcore.utils.JsonHelper;
+
 public class CacheHelper {
 
   private static final String PREF_NAME = "com.dungnb.gem.projectcore";
+  private static final String KEY_QUESTION_JSON = "KEY_QUESTION_JSON";
   private static CacheHelper sInstance;
   private SharedPreferences mSharedPreferences;
 
@@ -26,5 +30,18 @@ public class CacheHelper {
     mSharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
   }
 
-  /*Use SharePreferen*/
+  /*Use SharePreferences*/
+
+  public void saveQuestionJson(Question question) {
+    mSharedPreferences.edit().putString(KEY_QUESTION_JSON, JsonHelper.getGson().toJson(question)).apply();
+  }
+
+  public Question getQuestionObject() {
+    if (mSharedPreferences.contains(KEY_QUESTION_JSON)) {
+      String strQuestionJson = mSharedPreferences.getString(KEY_QUESTION_JSON, "");
+      if (JsonHelper.isJson(strQuestionJson))
+        return JsonHelper.getGson().fromJson(strQuestionJson, Question.class);
+    }
+    return null;
+  }
 }

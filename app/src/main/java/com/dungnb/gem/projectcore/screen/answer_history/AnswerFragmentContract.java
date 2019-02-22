@@ -1,4 +1,4 @@
-package com.dungnb.gem.projectcore.screen.answer;
+package com.dungnb.gem.projectcore.screen.answer_history;
 
 import com.dungnb.gem.projectcore.base.pattern_mvp.fragment.BaseFragmentContract;
 import com.dungnb.gem.projectcore.pojo.model.Answer;
