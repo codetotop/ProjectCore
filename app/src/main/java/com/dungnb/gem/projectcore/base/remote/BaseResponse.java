@@ -2,7 +2,7 @@ package com.dungnb.gem.projectcore.base.remote;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BaseResponse<T> {
+public abstract class BaseResponse<T> {
   @SerializedName("data")
   private T mData;
   @SerializedName("response_code")
